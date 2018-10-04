@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <title>Sistema Equipos</title>
+
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/material-dashboard.css" rel="stylesheet"/>
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+  <script src="/js/jquery.min.js" type="text/javascript"></script>
+
+
+<link href='/fullcalendar/fullcalendar.min.css' rel='stylesheet' />
+<link href='/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+<script src='/fullcalendar/moment.min.js'></script>
+<script src='/fullcalendar/fullcalendar.min.js'></script>
+
+<style>
+article .thumb{
+	width: 220px;
+	float: left;
+	height: 150px;
+	margin: 0px 10px 10px 0px;
+}
+
+</style>
+</head>
+
+
+
+<body>
+
+<div class="wrapper">
+
+      <div class="sidebar" data-color="blue">
+      <div class="logo">
+        <a href="./" class="simple-text">
+          Equipos
+        </a>
+      </div>
+
+        <div class="sidebar-wrapper">
+              <ul class="nav">
+                  
+                  <li>
+                      <a th:href="@{/equipos}">
+                          <i class="fa fa-calendar"></i>
+                          <p>Equipos</p>
+                      </a>
+                  </li>
+                  <li>
+                      <a th:href="@{/listar}">
+                          <i class="fa fa-support"></i>
+                          <p>Estadio</p>
+                      </a>
+                  </li>
+                                
+              </ul>
+        </div>
+      </div>
+
+      <div class="main-panel">
+      <nav class="navbar navbar-transparent navbar-absolute">
+        
+      </nav>
+
+      <div class="content">
+      <div class="container-fluid">
+      
+      <div class="row">
+	<div class="col-md-12">
+
+<div class="card">
+  <div class="card-header" data-background-color="blue">
+      <h4 class="title">Estadios</h4>
+  </div>
+  <div class="card-content table-responsive">
+
+<div class="btn-group">
+	<a th:href="@{/form}" class="btn btn-default"><i class='fa fa-support'></i>Nuevo Estadio</a>
+
+</div>
+		
+			<table class="table table-bordered table-hover">
+			<thead>
+<tr>
+<th >Codigo Estadio</th>
+<th >Codigo Equipo</th>
+<th >Nombre</th>
+<th >Pais</th>
+<th >Division</th>
+<th >Direccion</th>
+<th >Fecha Fundacion</th>
+<th >Capacidad Asientos</th>
+<th >Codigo Estado</th>
+<th rowspan="2"></th>
+</tr>
+</thead>
+
+			
+				<tr th:each="estadio: ${estadios}">
+				<td th:text="${estadio.estid}"/>
+				<td th:text="${estadio.eqID}" />
+				<td th:text="${estadio.nombre}" />
+				<td th:text="${estadio.pais}" />
+				<td th:text="${estadio.division}" />
+				<td th:text="${estadio.direccion}" />
+				<td th:text="${estadio.ffundacion}" />
+				<td th:text="${estadio.capasiento}" />
+				<td th:text="${estadio.codestado}" />
+				<td> <a th:href="@{/form/} + ${estadio.estid}" th:text="'Editar'" class="btn
+				btn-primary btn-xs" ></a></td>
+				<td> <a th:href="@{/eliminar/} + ${estadio.estid}" th:text="'Eliminar'" class="btn
+				btn-danger btn-xs" onclick="return confirm('Estas seguro?')" ></a></td>
+				</tr>				
+</table>
+</div>
+</div>
+	</div>
+</div>
+
+</div>
+      </div>
+
+    </div>
+  </div>
+  
+  
+ 
+  
+
+
+	
+	
+
+
+</body>
+
+<script src="/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="/js/material.min.js" type="text/javascript"></script>
+
+  <!--  Charts Plugin -->
+  <script src="/js/chartist.min.js"></script>
+
+  <!--  Notifications Plugin    -->
+  <script src="/js/bootstrap-notify.js"></script>
+
+  <!--  Google Maps Plugin    -->
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+  <!-- Material Dashboard javascript methods -->
+  <script src="/js/material-dashboard.js"></script>
+
+  <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+  <script src="/js/demo.js"></script>
+
+  <script type="text/javascript">
+      $(document).ready(function(){
+
+      // Javascript method's body can be found in assets/js/demos.js
+          demo.initDashboardPageCharts();
+
+      });
+  </script>
+
+
+</html>
